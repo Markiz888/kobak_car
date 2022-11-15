@@ -1,1 +1,0 @@
-# kobak_car
