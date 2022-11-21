@@ -1,7 +1,7 @@
 from django.contrib import admin
-from apps.blod.models import BlogCategory
-from apps.blod.models import Articl
-from apps.blod.models import Tag
+from apps.blog.models import BlogCategory
+from apps.blog.models import Articl
+from apps.blog.models import Tag
 
 
 
