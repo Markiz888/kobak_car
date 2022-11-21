@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blod', '0002_rename_blogcategorymodel_blogcategory'),
+        ('blog', '0002_rename_blogcategorymodel_blogcategory'),
     ]
 
     operations = [
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('publish_date', models.DateTimeField(verbose_name='Дата публикации')),
                 ('uppdated_at', models.DateTimeField(auto_now=True, verbose_name='Дата изменения')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('categore', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blod.blogcategory')),
+                ('categore', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.blogcategory')),
             ],
             options={
                 'verbose_name': 'Ствтья',

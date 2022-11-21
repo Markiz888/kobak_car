@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blod', '0005_tag_alter_articl_options_articl_tag'),
+        ('blog', '0005_tag_alter_articl_options_articl_tag'),
     ]
 
     operations = [
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='articl',
             name='tag',
-            field=models.ManyToManyField(to='blod.tag'),
+            field=models.ManyToManyField(to='blog.tag'),
         ),
     ]

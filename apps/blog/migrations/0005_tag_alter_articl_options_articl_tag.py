@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blod', '0004_alter_articl_categore'),
+        ('blog', '0004_alter_articl_categore'),
     ]
 
     operations = [
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='articl',
             name='tag',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='blod.tag', verbose_name='категория'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='blog.tag', verbose_name='категория'),
             preserve_default=False,
         ),
     ]
