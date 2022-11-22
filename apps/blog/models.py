@@ -24,14 +24,14 @@ class Tag(models.Model):
         verbose_name_plural = 'теги'
 
 
-class Articl(models.Model):
-    categore = models.ForeignKey(to=BlogCategory, verbose_name="категория", on_delete=models.CASCADE)
+class Article(models.Model):
+    category = models.ForeignKey(to=BlogCategory, verbose_name="категория", on_delete=models.CASCADE)
     title = models.CharField(verbose_name='Заголовок', max_length=255)
-    text_previes = models.TextField(verbose_name="Текст-привью", null=True, blank=True)
+    text_preview = models.TextField(verbose_name="Текст-привью", null=True, blank=True)
     text = models.TextField(verbose_name='Текст')
     tag = models.ManyToManyField(Tag)
     publish_date = models.DateTimeField(verbose_name="Дата публикации")
-    uppdated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
+    updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
 
     def __str__(self):
