@@ -29,7 +29,7 @@ class Article(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=255)
     text_preview = models.TextField(verbose_name="Текст-привью", null=True, blank=True)
     text = models.TextField(verbose_name='Текст')
-    tag = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag)
     publish_date = models.DateTimeField(verbose_name="Дата публикации")
     updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
