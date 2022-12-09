@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(requst):
-    return HttpResponse('Привет, это главная страница')
+    return render(requst, 'index.html')
