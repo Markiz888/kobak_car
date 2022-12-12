@@ -14,3 +14,9 @@
     height: 140px;
     line-height: 140px;
 }
+.header-text2{
+    color: red;
+    font-size: 18px;
+    text-align: right;
+    font-weight: bold;
+}
