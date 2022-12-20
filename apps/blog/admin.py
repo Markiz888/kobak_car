@@ -12,7 +12,7 @@ admin.site.register(Tag)
 class BlogCategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'image_tag_thumbnail', 'article_count']
     list_display_links = ['id', 'name', 'image_tag_thumbnail']
-    fields = ['name', 'image']
+    fields = ['name', 'image_tag', 'image']
     readonly_fields = ['image_tag']
 
     def article_count(self, instance):
@@ -20,12 +20,12 @@ class BlogCategoryAdmin(admin.ModelAdmin):
         url = reverse('admin:blog_article_changelist') + '?' + urlencode({'category__id__exact': instance.id})
         return format_html(f"<a href='{url}'>Статей: {articles}</a>")
 
-    article_count.short_description = 'Статей'
+    article_count.short_description = 'К-во статей'
 
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title','category_link','publish_date','created_at']
+    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at']
     list_display_links = ['id', 'title']
     list_filter = ['category', 'tags']
 

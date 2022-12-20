@@ -27,13 +27,13 @@ class BlogCategory(models.Model):
 
     def image_tag_thumbnail(self):
         if self.image:
-            return mark_safe(f"<img src=/'{MEDIA_ROOT}{self.image}'width='70'/>")
+            return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}' width='70'>")
 
     image_tag_thumbnail.short_description = 'Изображение'
 
     def image_tag(self):
         if self.image:
-            return mark_safe(f"<img src=/'{MEDIA_ROOT}{self.image}'/>")
+            return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}'>")
 
     image_tag.short_description = 'Изображения'
 
