@@ -5,9 +5,12 @@ from django.utils.html import format_html
 from django.utils.http import urlencode
 
 
-admin.site.register(Tag)
 
 
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    list_display_links = ['id', 'name']
 
 @admin.register(BlogCategory)
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -26,7 +29,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at']
+    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at', 'tags_link']
     list_display_links = ['id', 'title']
     list_filter = ['category', 'tags']
 
@@ -35,3 +38,13 @@ class ArticleAdmin(admin.ModelAdmin):
         return format_html(f"<a href='{url}'>{instance.category.name}</a>")
 
     category_link.short_description = 'Категория'
+
+    def tags_link(self, instance):
+        tags = instance.tags.all()
+        a = ''
+        for tag in tags:
+            url = reverse('admin:blog_tag_change', args=[tag.id])
+            a += f"<a href='{url}'>{tag.name}</a>,"
+        return format_html(a[0:-1])
+
+    tags_link.short_description = 'Теги'
