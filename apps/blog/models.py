@@ -3,7 +3,7 @@ from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
 from django.utils.safestring import mark_safe
 from config.settings import MEDIA_ROOT
-
+from apps.user.models import User
 
 # Create your models here.
 class BlogCategory(models.Model):
@@ -67,6 +67,7 @@ class Article(models.Model):
     publish_date = models.DateTimeField(verbose_name="Дата публикации")
     updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.title

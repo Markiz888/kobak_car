@@ -19,5 +19,14 @@
     Дата: <b>{{ article.publish_date }}</b>
     Категория: <b>{{ category.name }}</b>
 </p>
+    <p style="text-align: right">
+    {% if article.user.first_name %}
+            Создал: <b>{{ article.user.first_name }} {{ article.user.last_name }}</b>
+    {% endif %}
+    </p>
+    <p style="text-align: right">
+    {% if article.user %}
+        Аватар автора: <img class="img-thumbnail" src="{{ article.user.image_thumbnail.url }}" alt="">
+    {% endif %}
 {% endblock %}
 
