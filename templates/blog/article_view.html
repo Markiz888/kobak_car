@@ -25,7 +25,7 @@
     {% endif %}
     </p>
     <p style="text-align: right">
-    {% if article.user %}
+    {% if article.user.image_thumbnail %}
         Аватар автора: <img class="img-thumbnail" src="{{ article.user.image_thumbnail.url }}" alt="">
     {% endif %}
 {% endblock %}
