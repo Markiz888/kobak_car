@@ -29,7 +29,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at', 'tags_link', 'user']
+    list_display = ['id', 'title', 'category_link', 'user', 'publish_date', 'created_at', 'tags_link']
     list_display_links = ['id', 'title']
     list_filter = ['category', 'tags']
 

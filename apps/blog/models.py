@@ -67,7 +67,7 @@ class Article(models.Model):
     publish_date = models.DateTimeField(verbose_name="Дата публикации")
     updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+    user = models.ForeignKey(User, verbose_name="Автор" ,on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.title
