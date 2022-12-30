@@ -53,7 +53,7 @@ class Article(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=255)
     text_preview = models.TextField(verbose_name="Текст-привью", null=True, blank=True)
     text = models.TextField(verbose_name='Текст')
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, verbose_name='Теги')
     image = ProcessedImageField(
         verbose_name="Изображения",
         upload_to='blog/article/',

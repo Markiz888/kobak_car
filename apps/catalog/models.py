@@ -56,10 +56,11 @@ class Product(models.Model):
     name = models.CharField(verbose_name="Товар", max_length=255)
     slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    quanity = models.IntegerField(default=1)
+    quanity = models.IntegerField(verbose_name='Количество' ,default=1)
     price = models.DecimalField(verbose_name='Цена', max_digits=12, decimal_places=2, default=0)
-    updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
+
 
     class Meta:
         verbose_name = 'Товар'
