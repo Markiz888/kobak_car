@@ -10,7 +10,7 @@
                         <div class="col-6">
                             <a href="{{ image.image.url }}" class="product-image"
                                 data-lightbox="roadtrip">
-                                <img src="{{ image.image.url }}" alt=""
+                                <img src="{{ image.image_thumbnail.url }}" alt=""
                                     class="img-thumbnail">
                             </a>
                         </div>
@@ -19,10 +19,12 @@
             </div>
 
             <div class="col-xs-12 col-md-6">
-                {% if product.quantity != 0 %}
+                {% if product.quantity > 5 %}
                     <p>Наличие: <b class="text-success">В наличии</b></p>
+                {% elif product.quantity < 5 and product.quantity > 0 %}
+                    <p>Наличие: <b class="text-warning">Заканчивается</b></p>
                 {% else %}
-                    <p>Наличие: <b class="text-success">Нет в наличии</b></p>
+                    <p>Наличие: <b class="text-danger">Нет в наличии</b></p>
                 {% endif %}
                 <b class="text-danger product-price">{{ product.price }} грн</b>
                 <form action="">
@@ -31,9 +33,11 @@
                         <button class="btn btn-success" type="button" id="button-addon1">Купить</button>
                     </div>
                 </form>
+            {% if product.description %}
                 <br>
                 <h4 class="text-center">Описание</h4>
                 <p>{{ product.description }}</p>
+            {% endif %}
             </div>
 
         </div>

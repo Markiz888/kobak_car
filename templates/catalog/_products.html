@@ -8,10 +8,10 @@
             <div class="col-sm-12 col-md-4">
                 <div class="product">
                     <a href="{{ item.get_absolute_url }}">
-                        {% if item.image_tag %}
-                            <b class="img-thumbnail">{{ item.image_tag }}</b>
+                        {% if item.main_image %}
+                            <img src="{{ item.main_image.image_thumbnail.url }}" alt="">
                         {% else %}
-                            <img class="img-thumbnail" src="{% static 'img/no-image.png' %}" alt="">
+                            <img src="{% static 'img/no-image.png' %}" alt="">
                         {% endif %}
                         <b class="text-danger product-price">{{ item.price }} грн</b>
                         <p class="product-name">{{ item.name }}</p>
