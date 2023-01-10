@@ -39,7 +39,7 @@ class BlogCategory(MetaTagMixin):
 
     image_tag.short_description = 'Изображения'
 
-class Tag(MetaTagMixin):
+class Tag(models.Model):
     name = models.CharField(verbose_name='Tag', max_length=255)
 
     def __str__(self):
@@ -70,6 +70,12 @@ class Article(MetaTagMixin):
     updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
     created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
     user = models.ForeignKey(User, verbose_name="Автор" ,on_delete=models.SET_NULL, null=True, blank=True)
+
+
+    def get_meta_title(self):
+        if self.meta_title:
+            return self.meta_title
+        return self.title
 
     def __str__(self):
         return self.title
