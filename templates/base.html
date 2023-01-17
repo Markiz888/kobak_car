@@ -28,12 +28,16 @@
         </div>
         <div class="col-6"><p class="header-text">Продаю кабачки и машины:-)</p></div>
                 <div class="col-15"><p class="header-text">График роботы
- <p class="header-text2">круглосуточно
-<p class="header-text">Контакты
- <p class="header-text2">+447513812854</p>
- <p class="header-text2">+380678317135</p>
-    <p class="header-text2">+380982813121</p>
-    <p class="header-text2">Почта-markiz888n@gmail.com</p>
+                    <p class="header-text2">круглосуточно
+                    <p class="header-text">Контакты
+                    <p class="header-text2">+447513812854</p>
+                    <p class="header-text2">+380678317135</p><p class="header-text2">+380982813121</p>
+                    <p class="header-text2">Почта-markiz888n@gmail.com</p>
+                    {% if request.user.is_authenticated %}
+                        <p class="text-end">Привет, {{ request.user.username }} (<a href="{% url 'logout' %}">Выйти</a>)</p>
+                    {% else %}
+                        <p class="text-end"><a href="{% url 'login' %}">Войти</a>&nbsp;<a href="{% url 'register' %}">Зарегитрироваться</a></p>
+                    {% endif %}
 </div>
 
     </div>
