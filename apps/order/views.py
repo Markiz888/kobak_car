@@ -39,4 +39,5 @@ def add_to_cart(request):
 
 @login_required
 def order(request):
-    return render(request, 'order/cart.html', {'cart': get_cart_data(request.user)})
+    breadcrumbs = {'current': 'Корзина'}
+    return render(request, 'order/cart.html', {'cart': get_cart_data(request.user), 'breadcrumbs': breadcrumbs})
