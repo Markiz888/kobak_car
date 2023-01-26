@@ -45,6 +45,7 @@ def cart_view(request):
 
 @login_required
 def create_order_view(request):
+    breadcrumbs = {'current': 'Оформление заказа'}
     error = None
     user = request.user
     cart = get_cart_data(user)
@@ -60,7 +61,8 @@ def create_order_view(request):
         if form.is_valid():
             form.save()
             Cart.objects.filter(user=user).delete()
-            return render(request, 'order/created.html')
+            breadcrumbs = {'current': 'Заказ успешно создан'}
+            return render(request, 'order/created.html', {'breadcrumbs': breadcrumbs})
         error = form.errors
     else:
         form = CreateOrderForm(data={
@@ -69,4 +71,4 @@ def create_order_view(request):
             'last_name': user.last_name,
             'email': user.email,
         })
-    return render(request, 'order/create.html', {'cart': cart, 'error': error, 'form': form})
+    return render(request, 'order/create.html', {'cart': cart, 'error': error, 'form': form, 'breadcrumbs': breadcrumbs})
