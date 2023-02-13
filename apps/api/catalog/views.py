@@ -29,3 +29,8 @@ class ProductDeleteView(generics.DestroyAPIView):
     serializer_class = ProductWriteSerializer
     queryset = Product.objects.all()
     permission_classes = [permissions.IsAdminUser]
+
+class CategoryView(viewsets.ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+    permission_classes = [permissions.IsAdminUser]
