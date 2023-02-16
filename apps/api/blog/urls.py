@@ -5,6 +5,6 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = []
 
 router = DefaultRouter()
-router.register('category', ArticleViewSet, basename='category')
+router.register('article', ArticleViewSet, basename='article')
 
 urlpatterns += router.urls
