@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, viewsets
 from apps.blog.models import Article, BlogCategory, Tag
 from apps.api.blog.serializers import ArticleSerializer
-class ProductImageViewSet(viewsets.ModelViewSet):
+class ArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
 
