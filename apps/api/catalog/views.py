@@ -54,7 +54,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
 
     def get_permissions(self):
-        if self.action in ['create', 'update' 'destroy']:
+        if self.action in ['create', 'update', 'destroy']:
             return [permission() for permission in [permissions.IsAdminUser]]
         return [permission() for permission in [permissions.AllowAny]]
 
@@ -63,6 +63,6 @@ class ProductImageViewSet(viewsets.ModelViewSet):
     queryset = ProductImage.objects.all()
 
     def get_permissions(self):
-        if self.action in ['create', 'update' 'destroy']:
+        if self.action in ['create', 'update', 'destroy']:
             return [permission() for permission in [permissions.IsAdminUser]]
         return [permission() for permission in [permissions.AllowAny]]
