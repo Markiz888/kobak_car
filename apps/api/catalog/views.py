@@ -6,7 +6,6 @@ from apps.api.catalog.serializers import CategorySerializer, ProductReadSerializ
 
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductReadSerializer
-
     # queryset = Product.objects.filter(is_checked=True)
 
     def get_queryset(self):
@@ -14,7 +13,7 @@ class ProductListView(generics.ListAPIView):
 
         category = self.request.query_params.get('category')
         if category:
-            queryset = queryset.filter(category=category)
+            queryset = queryset.filter(categories=category)
 
         name = self.request.query_params.get('name')
         if name:
@@ -57,6 +56,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
         if self.action in ['create', 'update', 'destroy']:
             return [permission() for permission in [permissions.IsAdminUser]]
         return [permission() for permission in [permissions.AllowAny]]
+
 
 class ProductImageViewSet(viewsets.ModelViewSet):
     serializer_class = ProductImageSerializer
