@@ -1,0 +1,14 @@
+[
+  {
+    "model": "main.page",
+    "pk": 3,
+    "fields": {
+      "name": "Контакты",
+      "slug": "contacts",
+      "text": "Наши контакты:+447513812854\n+380678317135\n+380982813121\nПочта-markiz888n@gmail.com",
+      "meta_title": "Контакты",
+      "meta_description": "Контакты",
+      "meta_keywords": "Контакты"
+    }
+  }
+]
