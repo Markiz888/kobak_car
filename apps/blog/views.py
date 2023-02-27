@@ -38,7 +38,7 @@ def article_view(request, category_id, article_id):
         data = request.POST.copy()
         data.update(article=article)
         user = request.user
-        if not user.is_authenticated:
+        if not user.is_anonymous:
             data.update(name=user.username, email=user.email, is_checked=True)
         request.POST = data
         form = CreateCommentForm(request.POST)
