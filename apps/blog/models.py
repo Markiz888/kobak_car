@@ -50,6 +50,7 @@ class Tag(models.Model):
         verbose_name_plural = 'теги'
 
 
+
 class Article(MetaTagMixin):
     category = models.ForeignKey(to=BlogCategory, verbose_name="категория", on_delete=models.CASCADE)
     title = models.CharField(verbose_name='Заголовок', max_length=255)
@@ -83,3 +84,16 @@ class Article(MetaTagMixin):
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+
+class Comment(models.Model):
+    text = models.TextField(verbose_name='Comment')
+    name = models.CharField(verbose_name='User name', max_length=255)
+    email = models.EmailField(verbose_name='E-mail')
+    is_checked = models.BooleanField(verbose_name='Проверено', default=False)
+    updated_at = models.DateTimeField(verbose_name="Дата изменения", auto_now=True)
+    created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='Статья')
+
+    class Meta:
+        verbose_name = 'Коментарий'
+        verbose_name_plural = 'Коментарии'
