@@ -9,7 +9,7 @@ from django.utils.http import urlencode
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
+    list_display = ['id', 'user','name', 'is_checked', 'created_at']
     list_display_links = ['id', 'name']
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):

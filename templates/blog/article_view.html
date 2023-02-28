@@ -42,53 +42,54 @@
             {% endif %}
         </div>
     {% endif %}
-    <div class="text-right">
-    <div class="author">
-        <p class="text-center">Написать комментарий</p>
-        <div class="row">
-            <div class="col-sm-12 col-md-3"></div>
-            <div class="col-sm-12 col-md-6">
-                {% if error %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
+</div>
+    <div class="row">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <h3 class="text-center">Написать комментарий</h3>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="post" action="{% url 'create_comment' article_id=article.id %}">
+                {% csrf_token %}
+                {% if not request.user.is_authenticated %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ form.data.name }}"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" required
+                               value="{{ form.data.email }}">
                     </div>
                 {% endif %}
-                <form method="post">
-                    {% csrf_token %}
-                    {% if request.user.is_authenticated %}
-                        <div class="mb-3">
-                            <label for="text" class="form-label">Комментарий</label>
-                            <textarea name="text" id="text" class="form-control"
-                                      rows="3">{{ form.data.comment }}</textarea>
-                        </div>
-                    {% else %}
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ form.data.name }}"
-                                   required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" required
-                                   value="{{ form.data.email }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="text" class="form-label">Комментарий</label>
-                            <textarea name="text" id="text" class="form-control"
-                                      rows="3">{{ form.data.comment }}</textarea>
-                        </div>
-                    {% endif %}
-
-                    <button type="submit" class="btn btn-primary">Создать комментрарий</button>
-                </form>
-            </div>
+                <div class="mb-3">
+                    <label for="text" class="form-label">Текст комментария</label>
+                    <textarea name="text" id="text" class="form-control"
+                              rows="4" required>{{ form.data.comment }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Создать комментрарий</button>
+            </form>
         </div>
-        <p>
-            {% for coment in comments %}
-                <p class="text-left">Автор: {{ coment.name }}
-                <p class="text-left">{{ coment.text }}
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <h3 class="text-center">Комментарии</h3>
+            {% for comment in comments %}
+                {% if comment.user %}
+                    <p><b>{{ comment.user.first_name }} {{ comment.user.last_name }}</b></p>
+                {% else %}
+                    <p><b>{{ comment.name }}</b></p>
+                {% endif %}
+                <blockquote>{{ comment.text }}</blockquote>
+                <p class="text-end"><i>{{ comment.created_at }}</i></p>
+                <hr>
             {% endfor %}
-            </p>
+        </div>
     </div>
 {% endblock %}
 
